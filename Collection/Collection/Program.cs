@@ -9,7 +9,13 @@ namespace Collection
         static void Main(string[] args)
         {
             List<string> myList = new List<string>() { "mamas", "aram", "sigit"};
-            ListOperations(ref myList);
+            //ListOperations(ref myList);
+            Dictionary<string, int> myDict = new Dictionary<string, int>();
+            myDict.Add("cuba", 6);
+            myDict.Add("sigit", 7);
+            myDict.Add("segev", 5);
+            
+            DictionaryOperations(ref myDict);
         }
 
         public static void ListOperations (ref List<string> stringsList)
@@ -75,6 +81,31 @@ namespace Collection
                 stringsList.Add("4");
             }
 
+        }
+
+        public static void DictionaryOperations(ref Dictionary<string, int> myDict)
+        {
+            if(myDict == null)
+            {
+                Console.WriteLine("Dict is null");
+                return;
+            }
+            if (myDict.Count == 0)
+            {
+                Console.WriteLine("No key-value pairs");
+                return;
+            }
+            
+            foreach (var key in myDict.Keys)
+            {
+                if (key.ToLower() == "scuba")
+                {
+                    Console.WriteLine("Adding 'Empire' key with value of 6");
+                    myDict["Empire"] = 6;
+                    return;
+                }
+            }
+            Console.WriteLine("No key names 'scuba' found in the dict.");
         }
     }
 }
