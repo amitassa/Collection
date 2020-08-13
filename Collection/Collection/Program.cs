@@ -72,13 +72,14 @@ namespace Collection
             }
             catch (ArgumentNullException ex)
             {
-                Console.WriteLine("list is null, no unique values");
+                Console.WriteLine("list is null, no unique values" + ex.Message.ToString());
             }
             catch (ArgumentOutOfRangeException ex)
             {
                 stringsList.Add("2");
                 stringsList.Add("3");
                 stringsList.Add("4");
+                
             }
 
         }
@@ -106,6 +107,26 @@ namespace Collection
                 }
             }
             Console.WriteLine("No key names 'scuba' found in the dict.");
+        }
+
+        public static void StackOperations(ref Stack<DateTime> datesStack)
+        {
+            if (datesStack == null || datesStack.Count == 0)
+            {
+                Console.WriteLine("Stack is null or empty");
+                return;
+            }
+            if (DateTime.Now.Date > datesStack.Peek().Date)
+            {
+                datesStack.Pop();
+                datesStack.Push(DateTime.Now);
+                Console.WriteLine("Top date at the stack is before today => replaced by today date.");
+            }
+            else
+            {
+                Console.WriteLine("Top date at the stack is later then today => stack hasn`t change");
+            }
+
         }
     }
 }
